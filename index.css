@@ -18,7 +18,7 @@ body
 }
 #PageHeader1
 {
-   background-color: #400D5E;
+   background-color: #1e4b6c;
    background-image: none;
    box-shadow: 0px 2px 5px rgba(0,0,0,0.21);
    box-sizing: border-box;
@@ -99,7 +99,7 @@ body
 #settings_layer
 {
    background-clip: padding-box;
-   background-color: #400D5E;
+   background-color: #1e4b6c;
    background-image: none;
    border: 1px solid #969696;
    border-radius: 5px;
@@ -849,7 +849,7 @@ body
 }
 #wb_instruct 
 {
-   background-color: #400D5E;
+   background-color: #1e4b6c;
    background-image: none;
    border: 1px solid #969696;
    border-radius: 5px;
@@ -986,7 +986,7 @@ body
 }
 #Patch_Notes_DropDown .panel
 {
-   background-color: #400D5E;
+   background-color: #1e4b6c;
    background-image: none;
    border: 1px solid transparent;
    border-radius: 4px;
@@ -1014,7 +1014,7 @@ body
 }
 #Patch_Notes_DropDown .panel-default > .panel-heading
 {
-   background-color: #400D5E;
+   background-color: #1e4b6c;
    background-image: none;
 }
 #Patch_Notes_DropDown .panel-default.active
@@ -1023,7 +1023,7 @@ body
 }
 #Patch_Notes_DropDown .panel-default.active > .panel-heading
 {
-   background-color: #400D5E;
+   background-color: #1e4b6c;
    background-image: none;
 }
 #Patch_Notes_DropDown .panel-body
