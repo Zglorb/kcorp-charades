@@ -1041,7 +1041,7 @@ body
 {
    clear: both;
 }
-}
+
 #Patch_Notes_DropDown .panel-default > .panel-heading + .panel-collapse .panel-body
 {
    border-top-color: #969696;
@@ -1765,7 +1765,6 @@ body
 #donatros_acc .panel-body::after
 {
    clear: both;
-}
 }
 #donatros_acc .panel-default > .panel-heading + .panel-collapse .panel-body
 {
