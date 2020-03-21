@@ -12,6 +12,7 @@
     <script src="jquery-ui.min.js"></script>
     <script src="transition.min.js"></script>
     <script src="collapse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script>
         $(document).ready(function() {
             $("#timer_Spinner").spinner({
@@ -75,11 +76,10 @@
         }
     </script>
 
-
-
 </head>
 
 <body>
+    <div id = "app" style="color:white">
     <div id="container">
         <label for="" id="border_ouput" style="position:absolute;left:306px;top:303px;width:680px;height:346px;line-height:348px;z-index:47;"></label>
         <div id="wb_output" style="position:absolute;left:323px;top:430px;width:663px;height:229px;text-align:center;z-index:48;" class="ChatOuput">
@@ -87,42 +87,18 @@
         <input type="submit" id="StartGame_btn" onclick="StartGame();" name="" value="Start Game" style="position:absolute;left:567px;top:741px;width:172px;height:41px;z-index:49;">
         <input type="submit" id="NextWord_btn" onclick="NextRound();" name="" value="Next Word" style="position:absolute;left:567px;top:741px;width:172px;height:41px;visibility:hidden;z-index:50;">
         <div id="settings_layer" style="position:absolute;text-align:left;left:1079px;top:196px;width:222px;height:566px;z-index:51;">
+            <div style="margin-top: 50px">
+                <div v-for="category in categoriesList">
+                    <input type="checkbox" v-bind:id="category.switch" onclick="p.call(this)" v-bind:checked="category.state">
+                    <label v-bind:for="category.switch">{{category.id}}</label>
+                </div>
+            </div>
             <div id="wb_timer_Spinner" style="position:absolute;left:147px;top:384px;width:60px;height:24px;z-index:4;">
                 <input type="text" id="timer_Spinner" style="width:100%;height:16px;line-height:16px;" name="Spinner1" value="50"></div>
             <input type="text" id="channelName" style="position:absolute;left:35px;top:428px;width:144px;height:19px;z-index:5;" name="Editbox1" value="" autocomplete="off" spellcheck="false" placeholder="Channel Name">
-            <div id="wb_Game_Switch" style="position:absolute;left:187px;top:56px;width:20px;height:20px;z-index:6;">
-                <input type="checkbox" id="Game_Switch" onclick="p.call(this);" name="Checkbox1" value="on" checked style="position:absolute;left:0;top:0;"><label for="Game_Switch"></label></div>
-            <div id="wb_Twitch_Emotes_Switch" style="position:absolute;left:187px;top:78px;width:20px;height:20px;z-index:7;">
-                <input type="checkbox" id="Twitch_Emotes_Switch" onclick="p.call(this);" name="Checkbox1" value="on" checked style="position:absolute;left:0;top:0;"><label for="Twitch_Emotes_Switch"></label></div>
-            <div id="wb_Movies_Switch" style="position:absolute;left:187px;top:100px;width:20px;height:20px;z-index:8;">
-                <input type="checkbox" id="Movies_Switch" onclick="p.call(this);" name="Checkbox1" value="on" style="position:absolute;left:0;top:0;"><label for="Movies_Switch"></label></div>
             <input type="submit" id="popout_theword_btn" onclick="PopOutWord();" name="" value="Open Word Window" style="position:absolute;left:40px;top:470px;width:142px;height:24px;z-index:11;">
             <label for="" id="Label8" style="position:absolute;left:0px;top:2px;width:201px;height:44px;line-height:44px;z-index:12;">Settings</label>
             <input type="submit" id="Button1" onclick="location.reload();" name="" value="Reset" style="position:absolute;left:141px;top:527px;width:72px;height:25px;z-index:13;">
-            <div id="wb_Live_Streamers_Switch" style="position:absolute;left:187px;top:188px;width:20px;height:20px;z-index:15;">
-                <input type="checkbox" id="Live_Streamers_Switch" onclick="p.call(this);" name="Checkbox1" value="on" style="position:absolute;left:0;top:0;"><label for="Live_Streamers_Switch"></label></div>
-            <div id="wb_Youtube_Channels_Switch" style="position:absolute;left:187px;top:210px;width:20px;height:20px;z-index:16;">
-                <input type="checkbox" id="Youtube_Channels_Switch" onclick="p.call(this);" name="Checkbox1" value="on" style="position:absolute;left:0;top:0;"><label for="Youtube_Channels_Switch"></label></div>
-            <div id="wb_Lol_Champs_Switch" style="position:absolute;left:187px;top:351px;width:20px;height:20px;z-index:17;">
-                <input type="checkbox" id="Lol_Champs_Switch" onclick="p.call(this);" name="Checkbox1" value="on" style="position:absolute;left:0;top:0;"><label for="Youtube_Channels_Switch"></label></div>
-            <div id="wb_Games_label" style="position:absolute;left:13px;top:59px;width:164px;height:15px;z-index:17;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Jeux</span></div>
-            <div id="wb_Twtich_emotes_label" style="position:absolute;left:13px;top:81px;width:164px;height:15px;z-index:18;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Emotes Twitch</span></div>
-            <div id="wb_Movies_label" style="position:absolute;left:13px;top:103px;width:164px;height:15px;z-index:19;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Films</span></div>
-            <div id="wb_Live_Streamers_label" style="position:absolute;left:13px;top:191px;width:164px;height:15px;z-index:23;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Streamers</span></div>
-            <div id="wb_Youtube_channels_labels" style="position:absolute;left:13px;top:214px;width:164px;height:15px;z-index:24;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Youtubeurs</span></div>
-            <div id="wb_pokemon_label" style="position:absolute;left:13px;top:235px;width:164px;height:15px;z-index:25;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Pokémon</span></div>
-            <div id="wb_Pokemon_Switch" style="position:absolute;left:187px;top:232px;width:20px;height:20px;z-index:26;">
-                <input type="checkbox" id="Pokemon_Switch" onclick="p.call(this);" name="Checkbox1" value="on" style="position:absolute;left:0;top:0;"><label for="Pokemon_Switch"></label></div>
-            <div id="wb_Lol_Champs_label" style="position:absolute;left:13px;top:353px;width:164px;height:15px;z-index:33;">
-                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;">Champions lol</span></div>
-            <div id="wb_Lol_Champs_label" style="position:absolute;left:187px;top:351px;width:20px;height:20px;z-index:34;">
-                <input type="checkbox" id="Lol_Champs_Switch" onclick="p.call(this);" name="Checkbox1" value="on" style="position:absolute;left:0;top:0;"><label for="Lol_Champs_Switch"></label></div>
             <label for="" id="Label9" style="position:absolute;left:12px;top:384px;width:118px;height:16px;line-height:16px;z-index:35;">Timer (Sec):</label>
         </div>
         <input type="submit" id="word_hidder_btn" onclick="WordNotGuessed();" name="" value="Reveal Word" style="position:absolute;left:894px;top:667px;width:91px;height:19px;z-index:52;">
@@ -131,21 +107,21 @@
         <div id="wb_error_msg_box" style="position:absolute;left:557px;top:794px;width:189px;height:15px;text-align:center;z-index:55;" class="Error_MSG">
             &nbsp;</div>
         <div id="wb_Text2" style="position:absolute;left:525px;top:310px;width:247px;height:19px;text-align:center;z-index:56;">
-            <span style="color:#FFFFFF;font-family:Arial;font-size:17px;"><strong>Chat</strong></span></div>
+            <span style="font-family:Arial;font-size:17px;"><strong>Chat</strong></span></div>
         <div id="wb_instruct" style="position:absolute;left:9px;top:196px;width:189px;height:363px;z-index:57;">
-            <p style="font-size:16px;line-height:18px;color:#FFFFFF;"><span style="text-decoration:underline;font-weight:bold;">How To Play</span></p>
+            <p style="font-size:16px;line-height:18px;;"><span style="text-decoration:underline;font-weight:bold;">How To Play</span></p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
-            <p style="font-size:13px;line-height:16px;color:#FFFFFF;">1. Make sure to allow pop ups, if prompted!</p>
+            <p style="font-size:13px;line-height:16px;;">1. Make sure to allow pop ups, if prompted!</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
-            <p style="font-size:13px;line-height:16px;color:#FFFFFF;">2. To play, just enter your channel name, then press "Start Game"</p>
+            <p style="font-size:13px;line-height:16px;;">2. To play, just enter your channel name, then press "Start Game"</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
-            <p style="font-size:13px;line-height:16px;color:#FFFFFF;"><span style="text-decoration:underline;font-size:16px;line-height:18px;font-weight:bold;">Side Notes</span></p>
+            <p style="font-size:13px;line-height:16px;;"><span style="text-decoration:underline;font-size:16px;line-height:18px;font-weight:bold;">Side Notes</span></p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
-            <p style="font-size:13px;line-height:16px;color:#FFFFFF;">- Words <span style="text-decoration:underline;">Must</span> Be at the beginning of a guess.</p>
+            <p style="font-size:13px;line-height:16px;;">- Words <span style="text-decoration:underline;">Must</span> Be at the beginning of a guess.</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
-            <p style="font-size:13px;line-height:16px;color:#FFFFFF;">- Making sound affects is allowed. But its up to you.</p>
+            <p style="font-size:13px;line-height:16px;;">- Making sound affects is allowed. But its up to you.</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
-            <p style="font-size:13px;line-height:16px;color:#FFFFFF;">- You don't have to reset the game if you change any of the settings, except the channel name.</p>
+            <p style="font-size:13px;line-height:16px;">- You don't have to reset the game if you change any of the settings, except the channel name.</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
             <p style="font-size:13px;line-height:16px;">&nbsp;</p>
@@ -158,24 +134,24 @@
             <a href="#" onclick="dev_module_show_btn();"><img src="images/img0001.png" id="tiny_arrow" alt="" style="width:13px;height:10px;"></a>
         </div>
         <div id="wb_Dev_Notes" style="position:absolute;left:23px;top:865px;width:335px;height:313px;visibility:hidden;z-index:60;">
-            <p style="font-size:12px;line-height:13.5px;font-weight:bold;color:#FFFFFF;"><span style="text-decoration:underline;font-size:16px;line-height:18px;">Dev Notes:</span></p>
+            <p style="font-size:12px;line-height:13.5px;font-weight:bold;;"><span style="text-decoration:underline;font-size:16px;line-height:18px;">Dev Notes:</span></p>
             <p style="font-size:12px;line-height:13.5px;font-weight:bold;">&nbsp;</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">Congrats on finding this!</p>
+            <p style="font-size:12px;line-height:13.5px;;">Congrats on finding this!</p>
             <p style="font-size:12px;line-height:13.5px;">&nbsp;</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">Big Thanks for people liking this web app. Yes, when xQc played charades the first time it did give me an idea to make this :)</p>
+            <p style="font-size:12px;line-height:13.5px;;">Big Thanks for people liking this web app. Yes, when xQc played charades the first time it did give me an idea to make this :)</p>
             <p style="font-size:12px;line-height:13.5px;">&nbsp;</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;"><span style="text-decoration:underline;">Update Future:</span></p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">If there is a good ammount of people interested in this app i will do future updates to it.</p>
+            <p style="font-size:12px;line-height:13.5px;;"><span style="text-decoration:underline;">Update Future:</span></p>
+            <p style="font-size:12px;line-height:13.5px;;">If there is a good ammount of people interested in this app i will do future updates to it.</p>
             <p style="font-size:12px;line-height:13.5px;">&nbsp;</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">Like Adding:</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">-Chat Emote support / Nicer lookin Chat</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">-Fix my ugly footer and scaling</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">-Different Win Cons</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">-Add a Category rotation (so basically new words every few weeks)</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">-And Other things that come to mind...</p>
+            <p style="font-size:12px;line-height:13.5px;;">Like Adding:</p>
+            <p style="font-size:12px;line-height:13.5px;;">-Chat Emote support / Nicer lookin Chat</p>
+            <p style="font-size:12px;line-height:13.5px;;">-Fix my ugly footer and scaling</p>
+            <p style="font-size:12px;line-height:13.5px;;">-Different Win Cons</p>
+            <p style="font-size:12px;line-height:13.5px;;">-Add a Category rotation (so basically new words every few weeks)</p>
+            <p style="font-size:12px;line-height:13.5px;;">-And Other things that come to mind...</p>
             <p style="font-size:12px;line-height:13.5px;">&nbsp;</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">Bugs:</p>
-            <p style="font-size:12px;line-height:13.5px;color:#FFFFFF;">-My footer and content scaling -.-"</p>
+            <p style="font-size:12px;line-height:13.5px;;">Bugs:</p>
+            <p style="font-size:12px;line-height:13.5px;;">-My footer and content scaling -.-"</p>
             <p style="font-size:12px;line-height:13.5px;">&nbsp;</p>
         </div>
         <div id="wb_Patch_Notes_DropDown" style="position:absolute;left:1079px;top:761px;width:224px;height:385px;z-index:61;">
@@ -188,40 +164,7 @@
                     </div>
                     <div id="Patch_Notes_DropDown-collapse1" class="panel-collapse collapse" role="tabpanel">
                         <div class="panel-body">
-                            <textarea name="patch_notes_scroll_box" id="TextArea1" style="position:absolute;left:14px;top:6px;width:198px;height:246px;z-index:37;" rows="16" cols="22" disabled spellcheck="false">Version 1.4 (Future)
-
--Add in one or more categories
--Maybe add in more words to existing categories
--???
-
-Version 1.3.1 (Feb, 28, 2020)
-
--Reworked next word randomizer system.You will not get repeats so early, untill you saw everything in your category selections.
-You will get it ealry tho if you add / remove a category.
-
-Version 1.3 (Feb, 25, 2020)
-
--Added Pokémon
--Added Video Game Characters
--Added Superheroes
-
-Version 1.2 (Feb, 23 , 2020)
-
--Redid T.V Shows
--Added Youtube Channels
--Added BTTV / FFZ Emotes (Med)
--Adjusted Games, Actions
--17 More Words to B / F (Easy)
--Fixed Major Security Hole
-
-Version 1.1 (Feb, 20, 2020)
-
--Added live Streamers
--Redid Movies
--Redid Actors, and Renamed to Actors / Singers
--Small Bug Fixes
-
-</textarea>
+                            <p>Regler le travail de merde de l'autre developpeur</p>
                         </div>
                     </div>
                 </div>
@@ -234,7 +177,9 @@ Version 1.1 (Feb, 20, 2020)
                     <div id="Patch_Notes_DropDown-collapse2" class="panel-collapse collapse" role="tabpanel">
                         <div class="panel-body">
                             <div id="wb_Text5" style="position:absolute;left:12px;top:19px;width:193px;height:210px;z-index:38;">
-                                <span style="color:#DCDCDC;font-family:Arial;font-size:13px;">Games : 92 <br>Twtich Emotes: 95<br>Movies: 134<br>Actions: 141<br>Actors / Signers: 78<br>TV Shows: 90<br>Live Streamers: 98<br>Youtube Channels: 46<br>BBTV / FFZ (Easy): 125<br>BBTV / FFZ (Medium): 147<br>Pokémon: 78<br>Video Game Characters: 105<br>Superheroes: 65<br></span></div>
+                            <div v-for="category in categoriesList">
+                                <p>{{category.id}} : {{Object.keys(category.words).length}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,13 +209,14 @@ Version 1.1 (Feb, 20, 2020)
                     <div id="donatros_acc-collapse1" class="panel-collapse collapse" role="tabpanel">
                         <div class="panel-body">
                             <div id="wb_Text9" style="position:absolute;left:9px;top:22px;width:193px;height:119px;z-index:40;">
-                                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;"><u>Thank You<br></u><br>- Pokelawls<br>- Rulba<br><em><br><br><br></em></span></div>
+                                <span style="font-family:Arial;font-size:13px;"><u>Thank You<br></u><br>- Pokelawls<br>- Rulba<br><em><br><br><br></em></span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <input type="submit" id="hide_all_tabs_btn" onclick="HideAllTabs();" name="" value="Hide All" style="position:absolute;left:319px;top:667px;width:81px;height:19px;visibility:hidden;z-index:63;">
+    </div>
     </div>
     <div id="PageHeader1" style="position:fixed;text-align:left;left:0;top:0;right:0;height:84px;z-index:7777;">
         <div id="wb_Image1" style="position:absolute;left:600px;top:27px;width:28px;height:25px;z-index:0;"></div>
@@ -287,7 +233,6 @@ Version 1.1 (Feb, 20, 2020)
                 <span style="color:#808080;font-family:Arial;font-size:13px;">Made By: Lejara (Leption, darkll)</span></div>
             <div id="wb_Text6" style="position:absolute;left:18px;top:57px;width:246px;height:12px;z-index:42;">
                 <span style="color:#A9A9A9;font-family:Arial;font-size:11px;">Any donations will help support future growth</span></div>
-            <a href="#" onclick="window.location.href='https://www.paypal.com/paypalme2/lejara';">
                 <picture id="wb_Donate" style="position:absolute;left:9px;top:2px;width:160px;height:62px;z-index:43">
                     <img src="images/paypal-do-button.png" id="Donate" alt="">
                 </picture>
@@ -298,6 +243,18 @@ Version 1.1 (Feb, 20, 2020)
                 <span style="color:#A9A9A9;font-family:Arial;font-size:11px;">Post Here</span></div>
         </div>
     </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                categoriesList: []
+            },
+            mounted: function () {
+                this.categoriesList = list_of_categories;
+                console.log(list_of_categories);
+            }
+        })
+    </script>
 </body>
 
 </html>
