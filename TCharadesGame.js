@@ -82,7 +82,7 @@ function ConnectTwitchChat() {
             if (!gameFailed) {
               var clean_message = DOMPurify.sanitize(message.message, { ALLOWED_TAGS: ['b'] })
               document.getElementById("wb_output").innerHTML = ("<strong style=\"color:" + message.tags["color"] + "; \">" + message.username + "</strong>: " + clean_message);
-              if (clean_message.toLowerCase().search("^" + chosenWord) != -1 && timer < duration - 5) {
+              if (clean_message.toLowerCase().search("^" + chosenWord) != -1 && timer < duration - 10) {
                 WordGuessed();
               }
 
