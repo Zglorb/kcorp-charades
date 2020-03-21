@@ -11,6 +11,7 @@ var list_of_categories = [];
 var random_word_list_keys = [];
 var word_obj_concat = {};
 var word_cur_index = 0;
+var timer;
 
 var pop_window = null;
 
@@ -79,7 +80,7 @@ function ConnectTwitchChat() {
             if (!gameFailed) {
               var clean_message = DOMPurify.sanitize(message.message, { ALLOWED_TAGS: ['b'] })
               document.getElementById("wb_output").innerHTML = ("<strong style=\"color:" + message.tags["color"] + "; \">" + message.username + "</strong>: " + clean_message);
-              if (clean_message.toLowerCase().search("^" + chosenWord) != -1) {
+              if (clean_message.toLowerCase().search("^" + chosenWord) != -1 && timer < duration - 5) {
                 WordGuessed();
               }
 
@@ -110,12 +111,11 @@ function ConnectTwitchChat() {
 };
 
 function StartTimer(duration) {
-  var timer = duration,
-    minutes, seconds;
+  timer = duration;
 
   var runner = function() {
-    minutes = parseInt(timer / 60, 10)
-    seconds = parseInt(timer % 60, 10);
+    let minutes = parseInt(timer / 60, 10)
+    let seconds = parseInt(timer % 60, 10);
     // console.log(pop_window);
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
