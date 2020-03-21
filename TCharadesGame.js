@@ -12,6 +12,7 @@ var random_word_list_keys = [];
 var word_obj_concat = {};
 var word_cur_index = 0;
 var timer;
+let duration;
 
 var pop_window = null;
 
@@ -52,7 +53,8 @@ function NextRound() {
     PickWord();
     StopTimer();
     PopOutWord();
-  StartTimer(document.getElementById("timer_Spinner").value);
+  duration = document.getElementById("timer_Spinner").value;
+  StartTimer(duration);
   document.getElementById("NextWord_btn").style.visibility = "visible";
   document.getElementById("StartGame_btn").style.visibility = "hidden";
   document.getElementById("wb_error_msg_box").innerHTML = "";
