@@ -318,7 +318,7 @@ function HideAllTabs() {
     document.getElementById("donatros_acc").classList.add("hidden_tab");
     document.getElementById("wb_instruct").classList.add("hidden_tab");
     document.getElementById("Patch_Notes_DropDown").classList.add("hidden_tab");
-    document.getElementById("hide_all_tabs_btn").value = "Show All";;
+    document.getElementById("hide_all_tabs_btn").value = "Show All";
     document.getElementById("settings_layer").classList.add("hidden_tab");
 
   } else {
