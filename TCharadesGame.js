@@ -155,7 +155,6 @@ function PickWord() {
   wordFound = false;
 
   chosenWord = random_word_list_keys[word_cur_index];
-  console.log(random_word_list_keys)
   image_ChosenWord = word_obj_concat[chosenWord];
   word_cur_index++;
   if (word_cur_index == random_word_list_keys.length) {
