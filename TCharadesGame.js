@@ -1,3 +1,4 @@
+/*THAT'S NOT ME (NEIRDA) WHO DID THIS SHITTY CODE I'VE JUST MODIFIED THIS PAGE TO use FRENCH WORDS */
 var isConnected = false;
 var connectedChannel = ""
 
